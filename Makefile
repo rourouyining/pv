@@ -1,12 +1,12 @@
 CC=gcc
 
-OBJ=$(patsubst %.c,%.o,$(wildcard *.c))
+OBJ=$(filter-out test.o, $(patsubst %.c,%.o,$(wildcard *.c)))
 
 INCLUDE=
 CFLAGES=-g -Wall
-LIB=
+LIB= -lpthread
 
-target=test
+target=pv
 
 all:$(OBJ)
 	$(CC) $^ -o $(target) $(LIB)
